@@ -1,16 +1,15 @@
 from ast import For
 from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
-from telethon import TelegramClient, events
+from telethon import TelegramClient, events, types, utils
 from time import sleep
 import logging;
-from telethon import types, utils
 import asyncio
 import difflib
 
-API_ID = '14260225'
-API_HASH = '587676597964ac0bbf1fc20a243877be'
-SESSION_STRING = '1ApWapzMBu7pws3MmsyrTwbLMoHFsvheT1CoTWXTmifHBbs6X4du1Xf_38_Kl1IPYKIUbxgzoFOlHzStk7cJjMQb6e_50BdYmusT4HKn1PKlg26JOgTPdmYVl9EECgmN5SuvtlWGdn41FAuuNAP_QkNl_5sqYn41tPqySN_iPvjNuIf_I2530q8ffbHct6vFOYxtkdS8eNUg_efgS6AHQKWKOkCYR5iRhCMyJ2sy6CktOHJPv-kGsmVy3RHfElnjIEA662ADOhqSIK9DbSg-Dl9fxcc_BmbwpoFf_KwTVGDCUJhAM67dSVuVP6m9YDlimwMAVFpZ3_qmlYoGhIN2KsPIj9AF4ZLU='
+API_ID = '***'
+API_HASH = '***'
+SESSION_STRING = '***'
 client = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
 client.start()
