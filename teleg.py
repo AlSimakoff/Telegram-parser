@@ -1,9 +1,6 @@
-from ast import For
 from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
-from telethon import TelegramClient, events, types, utils
-from time import sleep
-import logging;
+from telethon import TelegramClient, events, types
 import asyncio
 import difflib
 
@@ -28,10 +25,8 @@ source_channel = [channel1, channel2, channel3,
 
 id=[]
 msg_arh=[]
+pasta=False
 
-
-s1 = "текст1"
-s2 = "текст2"
 
 def similarity(s1, s2):
   normalized1 = s1.lower()
@@ -43,18 +38,19 @@ def similarity(s1, s2):
 
 @client.on(events.Album(chats=(source_channel)))
 async def handler(event):
-    global id
+    global id, pasta
     id=[]
     for i in range(len(event.messages)):
         id.append(event.messages[i].id)
         print('foto in album', i)
-    await client.send_file(channel, file=event.messages, caption=event.text)
+    await asyncio.sleep(3)
+    if pasta==False:
+        await client.send_file(channel, file=event.messages, caption=event.text)
 
 @client.on(events.NewMessage(chats=(source_channel)))
 async def normal_handler(event):
-    await asyncio.sleep(3)
-    global id
-    global msg_arh
+    
+    global id, msg_arh, pasta
     pasta=False
     print()
     for i in range(len(msg_arh)):
@@ -66,6 +62,7 @@ async def normal_handler(event):
 
     if len(msg_arh)>20:
         del msg_arh[0]
+    await asyncio.sleep(3)
     if event.message.id in id or pasta==True:
         print('message from album or message is pasta')
     else:
